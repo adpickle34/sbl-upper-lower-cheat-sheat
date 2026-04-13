@@ -40,6 +40,7 @@
     padding: 32px;
   }
 
+  /* ── HEADER ─────────────────────────────────────────────── */
   .header {
     display: flex;
     align-items: flex-end;
@@ -47,6 +48,7 @@
     border-bottom: 3px solid var(--orange);
     padding-bottom: 14px;
     margin-bottom: 24px;
+    gap: 12px;
   }
   .header h1 {
     font-family: var(--display);
@@ -71,14 +73,17 @@
     color: var(--text-4);
     letter-spacing: 0.5px;
     line-height: 1.8;
+    flex-shrink: 0;
   }
 
+  /* ── GRID ────────────────────────────────────────────────── */
   .grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 16px;
   }
 
+  /* ── CARD ────────────────────────────────────────────────── */
   .card {
     background: var(--surface);
     border: 1.5px solid var(--border);
@@ -113,7 +118,7 @@
   .card.green .card-title { color: var(--green); }
   .card.red   .card-title { color: var(--red); }
 
-  /* SCHEDULE */
+  /* ── SCHEDULE ────────────────────────────────────────────── */
   .day-row {
     display: flex;
     align-items: center;
@@ -144,11 +149,11 @@
   .day-pill.upper { background: var(--orange-lt); color: var(--orange); }
   .day-pill.lower { background: var(--blue-lt);   color: var(--blue); }
   .day-pill.rest  { background: var(--surface2);  color: var(--text-4); }
-  .day-info { flex: 1; }
+  .day-info { flex: 1; min-width: 0; }
   .day-name { font-size: 14px; font-weight: 600; color: var(--text); }
   .day-muscles { font-family: var(--mono); font-size: 10px; color: var(--text-3); margin-top: 1px; }
 
-  /* VOLUME */
+  /* ── VOLUME ──────────────────────────────────────────────── */
   .vol-stat {
     display: flex;
     align-items: center;
@@ -181,7 +186,7 @@
     line-height: 1.5;
   }
 
-  /* STIMULATING REPS */
+  /* ── STIMULATING REPS ────────────────────────────────────── */
   .stim-intro {
     font-size: 13.5px;
     color: var(--text-2);
@@ -219,6 +224,8 @@
     font-family: var(--mono);
     font-size: 9px;
     color: var(--text-4);
+    flex-wrap: wrap;
+    gap: 4px;
   }
   .rep-bar-legend .hot { color: var(--orange); font-weight: 600; }
 
@@ -243,7 +250,7 @@
   }
   .stim-rule strong { color: var(--orange); }
 
-  /* MOVEMENT PATTERNS */
+  /* ── MOVEMENT PATTERNS ───────────────────────────────────── */
   .patterns-card { grid-column: 1 / 3; }
   .patterns-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   .pat-day-header {
@@ -263,7 +270,7 @@
   }
   .pat-dot.blue { background: var(--blue); }
   .pat-dot.optional { background: none; border: 2px solid var(--border-dk); }
-  .pat-col { flex: 1; }
+  .pat-col { flex: 1; min-width: 0; }
   .pat-name {
     font-family: var(--mono); font-size: 11px; font-weight: 600;
     color: var(--text-2); text-transform: uppercase; margin-bottom: 2px;
@@ -271,7 +278,7 @@
   .pat-exercises { font-size: 13px; color: var(--text); font-weight: 500; line-height: 1.4; }
   .pat-tip { font-size: 12px; color: var(--text-3); margin-top: 2px; line-height: 1.4; }
 
-  /* EXERCISE SELECTION */
+  /* ── EXERCISE SELECTION ──────────────────────────────────── */
   .rule-row { padding: 10px 0; border-bottom: 1px solid var(--border); }
   .rule-row:last-child { border-bottom: none; }
   .rule-tag {
@@ -285,7 +292,7 @@
   .rule-body { font-size: 13px; color: var(--text-2); line-height: 1.5; }
   .rule-body strong { color: var(--text); font-weight: 600; }
 
-  /* PROGRESSIVE OVERLOAD */
+  /* ── PROGRESSIVE OVERLOAD ────────────────────────────────── */
   .po-sub { font-family: var(--mono); font-size: 11px; color: var(--text-4); margin-bottom: 14px; letter-spacing: 0.5px; }
   .po-step { display: flex; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
   .po-step:last-child { border-bottom: none; }
@@ -298,14 +305,14 @@
     color: var(--orange); padding: 2px 8px; border-radius: 3px; margin-top: 4px;
   }
 
-  /* RECOVERY */
+  /* ── RECOVERY ────────────────────────────────────────────── */
   .rec-row { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
   .rec-row:last-child { border-bottom: none; }
   .rec-icon { font-size: 20px; flex-shrink: 0; width: 26px; text-align: center; line-height: 1; margin-top: 2px; }
   .rec-text { font-size: 13.5px; color: var(--text-2); line-height: 1.5; }
   .rec-text strong { color: var(--text); font-weight: 600; }
 
-  /* REAL RULES */
+  /* ── REAL RULES ──────────────────────────────────────────── */
   .quote-block {
     background: var(--surface2); border-left: 3px solid var(--red);
     padding: 10px 12px; border-radius: 0 4px 4px 0;
@@ -327,10 +334,106 @@
   .sc-val { font-family: var(--mono); font-size: 11px; font-weight: 600; color: var(--orange); }
   .sc-val.blue { color: var(--blue); }
 
+  /* ── FOOTER ──────────────────────────────────────────────── */
   .footer {
     margin-top: 16px; border-top: 1px solid var(--border-dk);
     padding-top: 10px; font-family: var(--mono); font-size: 10px;
     color: var(--text-4); letter-spacing: 0.5px; text-align: center;
+  }
+
+  /* ══════════════════════════════════════════════════════════
+     RESPONSIVE — TABLET  ≤ 1024px
+  ══════════════════════════════════════════════════════════ */
+  @media (max-width: 1024px) {
+    body { padding: 20px; }
+
+    .grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    /* Movement patterns: spans full width on tablet */
+    .patterns-card {
+      grid-column: 1 / -1;
+    }
+
+    .header h1 { font-size: 44px; }
+  }
+
+  /* ══════════════════════════════════════════════════════════
+     RESPONSIVE — MOBILE  ≤ 640px
+  ══════════════════════════════════════════════════════════ */
+  @media (max-width: 640px) {
+    body {
+      padding: 14px 12px;
+      font-size: 14px;
+    }
+
+    /* ── Header ── */
+    .header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+    .header h1 {
+      font-size: 36px;
+      line-height: 1.05;
+    }
+    .header-sub { font-size: 10px; }
+    .header-right {
+      text-align: left;
+      font-size: 10px;
+      line-height: 1.6;
+    }
+
+    /* ── Grid → single column ── */
+    .grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    /* ── Override any multi-column spans ── */
+    .patterns-card { grid-column: 1 / -1; }
+
+    /* ── Cards ── */
+    .card { padding: 14px 14px; }
+    .card-title { font-size: 19px; margin-bottom: 12px; }
+
+    /* ── Schedule ── */
+    .day-row { gap: 8px; padding: 8px 0; }
+    .day-label { font-size: 10px; width: 26px; }
+    .day-pill { font-size: 11px; width: 68px; padding: 3px 6px; }
+    .day-name { font-size: 13px; }
+    .day-muscles { font-size: 9px; }
+
+    /* ── Volume ── */
+    .vol-num { font-size: 34px; width: 58px; }
+    .vol-label { font-size: 12px; }
+    .vol-desc  { font-size: 12px; }
+
+    /* ── Movement patterns — stack to 1 column ── */
+    .patterns-grid { grid-template-columns: 1fr; gap: 16px; }
+    .pat-name { font-size: 10px; }
+    .pat-exercises { font-size: 12px; }
+    .pat-tip { font-size: 11px; }
+
+    /* ── RIR boxes — tighter on narrow screens ── */
+    .rir-box { font-size: 8px; padding: 4px 1px; }
+
+    /* ── Overload step code snippets ── */
+    .po-code { font-size: 10px; word-break: break-word; }
+
+    /* ── Set count grid ── */
+    .setcount-grid { grid-template-columns: 1fr; gap: 0; }
+
+    /* ── Footer ── */
+    .footer {
+      font-size: 9px;
+      letter-spacing: 0.3px;
+      padding-top: 10px;
+      margin-top: 12px;
+    }
   }
 </style>
 </head>
