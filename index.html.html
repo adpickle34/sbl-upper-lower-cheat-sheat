@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SBL Upper/Lower Cheat Sheet</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #f2f0eb;
+    --surface:   #ffffff;
+    --surface2:  #f7f5f0;
+    --border:    #e0dbd2;
+    --border-dk: #c8c1b4;
+    --orange:    #d4580a;
+    --orange-lt: #fff0e6;
+    --blue:      #1a5fa8;
+    --blue-lt:   #e8f0fb;
+    --green:     #1a7a45;
+    --green-lt:  #e6f5ec;
+    --red:       #c0392b;
+    --red-lt:    #fbeae8;
+    --text:      #1a1714;
+    --text-2:    #3d3830;
+    --text-3:    #706860;
+    --text-4:    #a09888;
+    --display:   'Barlow Condensed', sans-serif;
+    --body:      'Barlow', sans-serif;
+    --mono:      'JetBrains Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 14px;
+    line-height: 1.55;
+    padding: 32px;
+  }
+
+  .header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    border-bottom: 3px solid var(--orange);
+    padding-bottom: 14px;
+    margin-bottom: 24px;
+  }
+  .header h1 {
+    font-family: var(--display);
+    font-size: 58px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--text);
+    line-height: 1;
+  }
+  .header h1 span { color: var(--orange); }
+  .header-sub {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-3);
+    letter-spacing: 1px;
+    margin-top: 6px;
+  }
+  .header-right {
+    text-align: right;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-4);
+    letter-spacing: 0.5px;
+    line-height: 1.8;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    padding: 18px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--orange);
+    border-radius: 6px 0 0 6px;
+  }
+  .card.blue::after  { background: var(--blue); }
+  .card.green::after { background: var(--green); }
+  .card.red::after   { background: var(--red); }
+
+  .card-title {
+    font-family: var(--display);
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--orange);
+    margin-bottom: 14px;
+    text-transform: uppercase;
+  }
+  .card.blue  .card-title { color: var(--blue); }
+  .card.green .card-title { color: var(--green); }
+  .card.red   .card-title { color: var(--red); }
+
+  /* SCHEDULE */
+  .day-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .day-row:last-child { border-bottom: none; }
+  .day-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-4);
+    width: 32px;
+    flex-shrink: 0;
+  }
+  .day-pill {
+    font-family: var(--display);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 3px 9px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    width: 76px;
+    text-align: center;
+  }
+  .day-pill.upper { background: var(--orange-lt); color: var(--orange); }
+  .day-pill.lower { background: var(--blue-lt);   color: var(--blue); }
+  .day-pill.rest  { background: var(--surface2);  color: var(--text-4); }
+  .day-info { flex: 1; }
+  .day-name { font-size: 14px; font-weight: 600; color: var(--text); }
+  .day-muscles { font-family: var(--mono); font-size: 10px; color: var(--text-3); margin-top: 1px; }
+
+  /* VOLUME */
+  .vol-stat {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .vol-stat:last-child { border-bottom: none; }
+  .vol-num {
+    font-family: var(--display);
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--orange);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 72px;
+  }
+  .vol-num.blue  { color: var(--blue); }
+  .vol-num.green { color: var(--green); }
+  .vol-label { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+  .vol-desc  { font-size: 13px; color: var(--text-3); line-height: 1.45; }
+  .info-box {
+    margin-top: 12px;
+    background: var(--orange-lt);
+    border-left: 3px solid var(--orange);
+    padding: 10px 12px;
+    border-radius: 0 4px 4px 0;
+    font-size: 13px;
+    color: var(--text-2);
+    line-height: 1.5;
+  }
+
+  /* STIMULATING REPS */
+  .stim-intro {
+    font-size: 13.5px;
+    color: var(--text-2);
+    line-height: 1.55;
+    margin-bottom: 14px;
+  }
+  .rep-visual {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 12px 14px;
+    margin-bottom: 12px;
+  }
+  .rep-visual-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-4);
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+  .rep-bar {
+    display: flex;
+    gap: 4px;
+    align-items: flex-end;
+    height: 44px;
+    margin-bottom: 6px;
+  }
+  .rep-seg { flex: 1; border-radius: 2px; }
+  .rep-seg.noise  { background: #ddd8d0; height: 28%; }
+  .rep-seg.warmup { background: #c8c0b0; height: 55%; }
+  .rep-seg.stim   { background: var(--orange); height: 100%; }
+  .rep-bar-legend {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--text-4);
+  }
+  .rep-bar-legend .hot { color: var(--orange); font-weight: 600; }
+
+  .rir-label { font-family: var(--mono); font-size: 10px; color: var(--text-4); margin-bottom: 6px; letter-spacing: 0.5px; }
+  .rir-row { display: flex; gap: 4px; }
+  .rir-box {
+    flex: 1; padding: 5px 2px; text-align: center;
+    font-family: var(--mono); font-size: 9px; font-weight: 600; border-radius: 3px;
+  }
+  .rir-box.dead  { background: #ede9e2; color: var(--text-4); }
+  .rir-box.ok    { background: #d8ecdf; color: #2a7a50; }
+  .rir-box.sweet { background: #ffdfc4; color: #b84a00; }
+  .rir-box.ideal { background: var(--orange); color: #fff; }
+  .rir-caption {
+    display: flex; justify-content: space-between;
+    font-family: var(--mono); font-size: 9px; color: var(--text-4); margin-top: 4px;
+  }
+  .stim-rule {
+    background: var(--surface2); border: 1px solid var(--border-dk);
+    border-radius: 4px; padding: 10px 12px; margin-top: 12px;
+    font-size: 13px; color: var(--text-2); line-height: 1.5;
+  }
+  .stim-rule strong { color: var(--orange); }
+
+  /* MOVEMENT PATTERNS */
+  .patterns-card { grid-column: 1 / 3; }
+  .patterns-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .pat-day-header {
+    font-family: var(--mono); font-size: 10px; font-weight: 600;
+    letter-spacing: 1px; padding: 5px 8px; border-radius: 3px; margin-bottom: 12px;
+    background: var(--orange-lt); color: var(--orange);
+  }
+  .pat-day-header.blue { background: var(--blue-lt); color: var(--blue); }
+  .pat-row {
+    display: flex; gap: 12px; padding: 8px 0;
+    border-bottom: 1px solid var(--border); align-items: flex-start;
+  }
+  .pat-row:last-child { border-bottom: none; }
+  .pat-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--orange); flex-shrink: 0; margin-top: 5px;
+  }
+  .pat-dot.blue { background: var(--blue); }
+  .pat-dot.optional { background: none; border: 2px solid var(--border-dk); }
+  .pat-col { flex: 1; }
+  .pat-name {
+    font-family: var(--mono); font-size: 11px; font-weight: 600;
+    color: var(--text-2); text-transform: uppercase; margin-bottom: 2px;
+  }
+  .pat-exercises { font-size: 13px; color: var(--text); font-weight: 500; line-height: 1.4; }
+  .pat-tip { font-size: 12px; color: var(--text-3); margin-top: 2px; line-height: 1.4; }
+
+  /* EXERCISE SELECTION */
+  .rule-row { padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .rule-row:last-child { border-bottom: none; }
+  .rule-tag {
+    display: inline-block; font-family: var(--mono); font-size: 10px; font-weight: 600;
+    letter-spacing: 0.5px; padding: 2px 8px; border-radius: 3px; margin-bottom: 4px;
+    background: var(--orange-lt); color: var(--orange);
+  }
+  .rule-tag.green { background: var(--green-lt); color: var(--green); }
+  .rule-tag.blue  { background: var(--blue-lt);  color: var(--blue); }
+  .rule-tag.red   { background: var(--red-lt);   color: var(--red); }
+  .rule-body { font-size: 13px; color: var(--text-2); line-height: 1.5; }
+  .rule-body strong { color: var(--text); font-weight: 600; }
+
+  /* PROGRESSIVE OVERLOAD */
+  .po-sub { font-family: var(--mono); font-size: 11px; color: var(--text-4); margin-bottom: 14px; letter-spacing: 0.5px; }
+  .po-step { display: flex; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+  .po-step:last-child { border-bottom: none; }
+  .po-num { font-family: var(--display); font-size: 28px; font-weight: 800; color: var(--orange); line-height: 1; flex-shrink: 0; width: 24px; padding-top: 2px; }
+  .po-text { font-size: 13.5px; color: var(--text-2); line-height: 1.5; }
+  .po-text strong { color: var(--text); font-weight: 600; }
+  .po-code {
+    display: inline-block; font-family: var(--mono); font-size: 11px;
+    background: var(--surface2); border: 1px solid var(--border-dk);
+    color: var(--orange); padding: 2px 8px; border-radius: 3px; margin-top: 4px;
+  }
+
+  /* RECOVERY */
+  .rec-row { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+  .rec-row:last-child { border-bottom: none; }
+  .rec-icon { font-size: 20px; flex-shrink: 0; width: 26px; text-align: center; line-height: 1; margin-top: 2px; }
+  .rec-text { font-size: 13.5px; color: var(--text-2); line-height: 1.5; }
+  .rec-text strong { color: var(--text); font-weight: 600; }
+
+  /* REAL RULES */
+  .quote-block {
+    background: var(--surface2); border-left: 3px solid var(--red);
+    padding: 10px 12px; border-radius: 0 4px 4px 0;
+    font-size: 13px; color: var(--text-2); font-style: italic;
+    line-height: 1.55; margin-bottom: 10px;
+  }
+  .nonneg-label { font-family: var(--mono); font-size: 10px; font-weight: 600; color: var(--red); letter-spacing: 1px; margin-bottom: 8px; margin-top: 10px; }
+  .tags-wrap { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; }
+  .ntag { font-family: var(--mono); font-size: 10px; font-weight: 600; padding: 4px 8px; border-radius: 3px; letter-spacing: 0.3px; }
+  .ntag.o { background: var(--orange-lt); color: var(--orange); }
+  .ntag.g { background: var(--green-lt);  color: var(--green); }
+  .ntag.b { background: var(--blue-lt);   color: var(--blue); }
+  .ntag.d { background: var(--surface2);  color: var(--text-3); border: 1px solid var(--border-dk); }
+
+  .setcount { background: var(--surface2); border: 1px solid var(--border); border-radius: 4px; padding: 10px 12px; }
+  .setcount-label { font-family: var(--mono); font-size: 10px; color: var(--text-4); letter-spacing: 0.5px; margin-bottom: 8px; }
+  .setcount-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px 16px; }
+  .sc-row { display: flex; justify-content: space-between; font-size: 13px; color: var(--text-2); padding: 2px 0; border-bottom: 1px dotted var(--border); }
+  .sc-val { font-family: var(--mono); font-size: 11px; font-weight: 600; color: var(--orange); }
+  .sc-val.blue { color: var(--blue); }
+
+  .footer {
+    margin-top: 16px; border-top: 1px solid var(--border-dk);
+    padding-top: 10px; font-family: var(--mono); font-size: 10px;
+    color: var(--text-4); letter-spacing: 0.5px; text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>UPPER / LOWER <span>CHEAT SHEET</span></h1>
+    <div class="header-sub">SCIENCE-BASED LIFTING · HYPERTROPHY PRINCIPLES · 4-DAY SPLIT</div>
+  </div>
+  <div class="header-right">
+    4–6 WORKING SETS / MUSCLE / WEEK<br>
+    REP RANGE: 3–8 · TARGET: 6<br>
+    RIR: 0–2 ON ALL WORKING SETS
+  </div>
+</div>
+
+<div class="grid">
+
+  <!-- ① SCHEDULE -->
+  <div class="card">
+    <div class="card-title">Weekly Schedule</div>
+    <div class="day-row">
+      <div class="day-label">MON</div>
+      <div class="day-pill upper">UPPER A</div>
+      <div class="day-info">
+        <div class="day-name">Push Focus</div>
+        <div class="day-muscles">CHEST · SHOULDERS · TRICEPS · BACK PULL</div>
+      </div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">TUE</div>
+      <div class="day-pill lower">LOWER A</div>
+      <div class="day-info">
+        <div class="day-name">Squat Focus</div>
+        <div class="day-muscles">QUADS · GLUTES · HAMSTRINGS · CALVES</div>
+      </div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">WED</div>
+      <div class="day-pill rest">REST</div>
+      <div class="day-info">
+        <div class="day-name">Recovery</div>
+        <div class="day-muscles">WALK · STRETCH · LIGHT CARDIO OK</div>
+      </div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">THU</div>
+      <div class="day-pill upper">UPPER B</div>
+      <div class="day-info">
+        <div class="day-name">Pull Focus</div>
+        <div class="day-muscles">BACK · REAR DELTS · BICEPS · PRESS</div>
+      </div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">FRI</div>
+      <div class="day-pill lower">LOWER B</div>
+      <div class="day-info">
+        <div class="day-name">Hip Focus</div>
+        <div class="day-muscles">HAMSTRINGS · GLUTES · QUADS · CALVES</div>
+      </div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">SAT</div>
+      <div class="day-pill rest">REST</div>
+      <div class="day-info">
+        <div class="day-name">Rest</div>
+        <div class="day-muscles">DAYS CAN SHIFT — DON'T TRAIN 3 IN A ROW</div>
+      </div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">SUN</div>
+      <div class="day-pill rest">REST</div>
+      <div class="day-info"><div class="day-name">Rest</div></div>
+    </div>
+  </div>
+
+  <!-- ② VOLUME -->
+  <div class="card">
+    <div class="card-title">Volume Bible</div>
+    <div class="vol-stat">
+      <div class="vol-num">4–6</div>
+      <div>
+        <div class="vol-label">Working Sets / Muscle / Week</div>
+        <div class="vol-desc">Your weekly net stimulus — split across 2 sessions. This number is what actually matters, not per-session volume.</div>
+      </div>
+    </div>
+    <div class="vol-stat">
+      <div class="vol-num blue">2–3</div>
+      <div>
+        <div class="vol-label">Sets Per Muscle Per Session</div>
+        <div class="vol-desc">At 4 sets/week → 2 per session. At 6 sets/week → 3 per session.</div>
+      </div>
+    </div>
+    <div class="vol-stat">
+      <div class="vol-num green">6</div>
+      <div>
+        <div class="vol-label">Target Reps Per Set</div>
+        <div class="vol-desc">Range is 3–8. Default to 6. Heavy enough for mechanical tension, controlled enough for quality reps.</div>
+      </div>
+    </div>
+    <div class="info-box">
+      A set only counts if you took it close to failure. 4 hard, honest sets beats hammering a muscle for 2 hours at half effort.
+    </div>
+  </div>
+
+  <!-- ③ STIMULATING REPS -->
+  <div class="card">
+    <div class="card-title">Stimulating Reps</div>
+    <p class="stim-intro">Only reps with simultaneously <strong>high motor unit recruitment</strong> AND <strong>high mechanical tension</strong> (slow bar speed) actually drive muscle growth — that's the last handful before failure.</p>
+
+    <div class="rep-visual">
+      <div class="rep-visual-label">SET OF 8 — WHAT'S ACTUALLY WORKING</div>
+      <div class="rep-bar">
+        <div class="rep-seg noise"></div>
+        <div class="rep-seg noise"></div>
+        <div class="rep-seg warmup"></div>
+        <div class="rep-seg warmup"></div>
+        <div class="rep-seg stim"></div>
+        <div class="rep-seg stim"></div>
+        <div class="rep-seg stim"></div>
+        <div class="rep-seg stim"></div>
+      </div>
+      <div class="rep-bar-legend">
+        <span>Rep 1 — low stimulus</span>
+        <span class="hot">↑ Last 4–5 = growth reps</span>
+      </div>
+    </div>
+
+    <div class="rir-label">REPS IN RESERVE — WHERE SHOULD YOUR SETS END?</div>
+    <div class="rir-row">
+      <div class="rir-box dead">RIR 8+</div>
+      <div class="rir-box dead">RIR 6</div>
+      <div class="rir-box dead">RIR 4</div>
+      <div class="rir-box ok">RIR 3</div>
+      <div class="rir-box sweet">RIR 2</div>
+      <div class="rir-box sweet">RIR 1</div>
+      <div class="rir-box ideal">FAIL</div>
+    </div>
+    <div class="rir-caption">
+      <span>← Junk territory</span>
+      <span>Target zone →</span>
+    </div>
+
+    <div class="stim-rule">
+      Train to <strong>RIR 0–2</strong> on every working set. Above RIR 3 adds fatigue without meaningful stimulus. Beginners: go to failure — you can't gauge RIR yet anyway.
+    </div>
+  </div>
+
+  <!-- ④ MOVEMENT PATTERNS -->
+  <div class="card green patterns-card">
+    <div class="card-title">Movement Pattern Map</div>
+    <div class="patterns-grid">
+      <div>
+        <div class="pat-day-header">UPPER DAY — Both A &amp; B</div>
+        <div class="pat-row">
+          <div class="pat-dot"></div>
+          <div class="pat-col">
+            <div class="pat-name">Horizontal Push</div>
+            <div class="pat-exercises">Incline / Flat Press — Barbell, DB, or Machine</div>
+            <div class="pat-tip">Upper A: incline. Upper B: flat or cable fly</div>
+          </div>
+        </div>
+        <div class="pat-row">
+          <div class="pat-dot"></div>
+          <div class="pat-col">
+            <div class="pat-name">Scapular Retraction</div>
+            <div class="pat-exercises">Seated Cable Row, Machine Row, Chest-Supported Row</div>
+            <div class="pat-tip">One row variation per upper day</div>
+          </div>
+        </div>
+        <div class="pat-row">
+          <div class="pat-dot"></div>
+          <div class="pat-col">
+            <div class="pat-name">Shoulder Abduction</div>
+            <div class="pat-exercises">Lateral Raises — Cable or DB</div>
+            <div class="pat-tip">Mid delt. Neuromechanically matched. Non-negotiable.</div>
+          </div>
+        </div>
+        <div class="pat-row">
+          <div class="pat-dot"></div>
+          <div class="pat-col">
+            <div class="pat-name">Shoulder Adduction</div>
+            <div class="pat-exercises">Lat Pulldown, Pull-Up — pronated wide grip</div>
+            <div class="pat-tip">Vary grip: pronated (A), neutral (B)</div>
+          </div>
+        </div>
+        <div class="pat-row">
+          <div class="pat-dot"></div>
+          <div class="pat-col">
+            <div class="pat-name">Elbow Flexion</div>
+            <div class="pat-exercises">Incline DB Curl, Cable Curl, Hammer Curl</div>
+            <div class="pat-tip">Behind-body = stretched position = more growth</div>
+          </div>
+        </div>
+        <div class="pat-row">
+          <div class="pat-dot"></div>
+          <div class="pat-col">
+            <div class="pat-name">Elbow Extension</div>
+            <div class="pat-exercises">Cable Pushdown, Overhead Extension, JM Press</div>
+            <div class="pat-tip">Overhead hits long head at full stretch</div>
+          </div>
+        </div>
+        <div class="pat-row">
+          <div class="pat-dot optional"></div>
+          <div class="pat-col">
+            <div class="pat-name">Rear Delt / Shoulder Ext.</div>
+            <div class="pat-exercises">Face Pull, Rear Delt Fly, Transverse Row</div>
+            <div class="pat-tip">Upper B focus. 1 set is enough.</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="pat-day-header blue">LOWER DAY — Both A &amp; B</div>
+        <div class="pat-row">
+          <div class="pat-dot blue"></div>
+          <div class="pat-col">
+            <div class="pat-name">Knee Extension</div>
+            <div class="pat-exercises">Squat, Leg Press, Hack Squat, Leg Extension</div>
+            <div class="pat-tip">Lower A: squat/press. Lower B: leg ext. + press</div>
+          </div>
+        </div>
+        <div class="pat-row">
+          <div class="pat-dot blue"></div>
+          <div class="pat-col">
+            <div class="pat-name">Knee Flexion</div>
+            <div class="pat-exercises">Leg Curl — seated or lying, Nordic, SLDL</div>
+            <div class="pat-tip">Seated curl = longer muscle length = more growth</div>
+          </div>
+        </div>
+        <div class="pat-row">
+          <div class="pat-dot blue"></div>
+          <div class="pat-col">
+            <div class="pat-name">Hip Extension</div>
+            <div class="pat-exercises">RDL, Hip Thrust, Good Morning, 45° Extension</div>
+            <div class="pat-tip">Lower A: RDL. Lower B: hip thrust or cable pull-through</div>
+          </div>
+        </div>
+        <div class="pat-row">
+          <div class="pat-dot blue"></div>
+          <div class="pat-col">
+            <div class="pat-name">Ankle Extension</div>
+            <div class="pat-exercises">Standing Calf Raise, Seated Calf Raise</div>
+            <div class="pat-tip">Need both — standing hits gastroc, seated hits soleus</div>
+          </div>
+        </div>
+        <div class="pat-row">
+          <div class="pat-dot optional"></div>
+          <div class="pat-col">
+            <div class="pat-name">Hip Adduction</div>
+            <div class="pat-exercises">Cable / Machine Hip Adduction, Copenhagen Plank</div>
+            <div class="pat-tip">Skip if your SLDL already has &gt;45° hip range</div>
+          </div>
+        </div>
+        <div class="pat-row">
+          <div class="pat-dot optional"></div>
+          <div class="pat-col">
+            <div class="pat-name">Core (Optional)</div>
+            <div class="pat-exercises">Cable Crunch, Hanging Leg Raise, Ab Wheel</div>
+            <div class="pat-tip">1–2 sets tacked on at end of any session</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑤ EXERCISE SELECTION -->
+  <div class="card blue">
+    <div class="card-title">Exercise Selection</div>
+    <div class="rule-row">
+      <div class="rule-tag">STRETCH = GROWTH</div>
+      <div class="rule-body">Prioritize the <strong>loaded stretch position</strong>. Incline curl &gt; standing curl. Overhead ext. &gt; pushdown for the long head. The bottom of the rep is where growth happens.</div>
+    </div>
+    <div class="rule-row">
+      <div class="rule-tag green">NEUROMECHANICAL MATCHING</div>
+      <div class="rule-body">Choose exercises where the <strong>target muscle has the best mechanical leverage</strong>. Lateral raise = mid delt. Leg extension = rectus femoris. Your body recruits what it can leverage most efficiently.</div>
+    </div>
+    <div class="rule-row">
+      <div class="rule-tag blue">MACHINES USUALLY WIN</div>
+      <div class="rule-body">For isolation work, <strong>cables and machines are often superior</strong> — safer to fail on, no balance tax, consistent tension. Save free weights for compounds where stability is also a training goal.</div>
+    </div>
+    <div class="rule-row">
+      <div class="rule-tag">LENGTHENED PARTIALS</div>
+      <div class="rule-body">On your <strong>last set</strong> of isolation exercises, hit failure, then keep going with partials in the <strong>stretched range only</strong>. ~40% more growth in some studies. Best on: curls, laterals, leg curls, flys.</div>
+    </div>
+    <div class="rule-row">
+      <div class="rule-tag red">AVOID FATIGUE OVERLAP</div>
+      <div class="rule-body">Don't fry your biceps early on Upper A — you need them for rows. Always <strong>sequence compounds first, isolations last</strong>. Beginners: favor compound until you can feel the target muscle working.</div>
+    </div>
+    <div class="rule-row">
+      <div class="rule-tag green">A vs B VARIATION</div>
+      <div class="rule-body"><strong>Vary the exercise, not the pattern.</strong> Incline press (A) → flat press or machine press (B). Back squat (A) → leg press + leg extension (B).</div>
+    </div>
+  </div>
+
+  <!-- ⑥ PROGRESSIVE OVERLOAD -->
+  <div class="card">
+    <div class="card-title">Progressive Overload</div>
+    <div class="po-sub">DOUBLE PROGRESSION — SBL DEFAULT METHOD</div>
+    <div class="po-step">
+      <div class="po-num">1</div>
+      <div class="po-text">
+        <strong>Pick your rep range.</strong> Default: 4–8. Target 6 reps per set.
+        <div class="po-code">Incline Press → 3 sets × 6 reps</div>
+      </div>
+    </div>
+    <div class="po-step">
+      <div class="po-num">2</div>
+      <div class="po-text">
+        <strong>Add reps</strong> each session until you hit the top of the range across all sets at the same weight.
+        <div class="po-code">6 → 7 → 8 reps → then add weight</div>
+      </div>
+    </div>
+    <div class="po-step">
+      <div class="po-num">3</div>
+      <div class="po-text">
+        <strong>Add load</strong> (smallest available increment), reset reps to the bottom of the range.
+        <div class="po-code">+5 lb → back to 6 reps → repeat</div>
+      </div>
+    </div>
+    <div class="po-step">
+      <div class="po-num">4</div>
+      <div class="po-text"><strong>Track every session.</strong> Can't beat last week? Check sleep and calories before blaming the program.</div>
+    </div>
+    <div class="po-step">
+      <div class="po-num">5</div>
+      <div class="po-text"><strong>Deload</strong> every 4–6 weeks or if performance drops 2+ sessions in a row. Cut volume ~50% for one week.</div>
+    </div>
+  </div>
+
+  <!-- ⑦ RECOVERY -->
+  <div class="card green">
+    <div class="card-title">Recovery Rules</div>
+    <div class="rec-row">
+      <div class="rec-icon">💤</div>
+      <div class="rec-text"><strong>7–9 hrs sleep minimum.</strong> Growth hormone peaks during deep sleep — this is when muscle protein synthesis actually runs. Without it, volume means nothing.</div>
+    </div>
+    <div class="rec-row">
+      <div class="rec-icon">🍗</div>
+      <div class="rec-text"><strong>0.8–1g protein per lb of bodyweight per day.</strong> Non-negotiable. Nothing else matters if this isn't hit. 3–5 meals, 40g+ per sitting is fine.</div>
+    </div>
+    <div class="rec-row">
+      <div class="rec-icon">🍚</div>
+      <div class="rec-text"><strong>Carbs matter.</strong> High glycogen = lower CNS fatigue = higher motor unit recruitment = more effective reps per set. Don't train fasted if you want max output.</div>
+    </div>
+    <div class="rec-row">
+      <div class="rec-icon">📅</div>
+      <div class="rec-text"><strong>48–72 hrs between sessions hitting the same muscle.</strong> The upper/lower structure handles this automatically — don't collapse it by doubling up sessions.</div>
+    </div>
+    <div class="rec-row">
+      <div class="rec-icon">❌</div>
+      <div class="rec-text"><strong>Soreness ≠ growth.</strong> DOMS is muscle damage, not a hypertrophy signal. Chase the progressive overload log, not the soreness.</div>
+    </div>
+  </div>
+
+  <!-- ⑧ THE REAL RULES -->
+  <div class="card red">
+    <div class="card-title">The Real Rules</div>
+    <div class="quote-block">"The best split is the one you enjoy, can recover from, and do consistently. Stop obsessing over optimal when you haven't nailed the basics."</div>
+    <div class="quote-block">"Without mechanical tension, all the volume in the world does very little. Training hard is not optional."</div>
+    <div class="nonneg-label">NON-NEGOTIABLES</div>
+    <div class="tags-wrap">
+      <span class="ntag o">OVERLOAD EVERY SESSION</span>
+      <span class="ntag o">TRACK YOUR LIFTS</span>
+      <span class="ntag g">HIT FAILURE OR CLOSE</span>
+      <span class="ntag g">STAY ON EXERCISES LONG ENOUGH TO PROGRESS</span>
+      <span class="ntag b">2× / WEEK PER MUSCLE</span>
+      <span class="ntag b">CONSISTENT FORM</span>
+      <span class="ntag d">NO JUNK VOLUME</span>
+      <span class="ntag d">NO EGO SETS</span>
+    </div>
+    <div class="setcount">
+      <div class="setcount-label">WEEKLY SET COUNT — QUICK REFERENCE</div>
+      <div class="setcount-grid">
+        <div class="sc-row">Chest <span class="sc-val">4–6 sets</span></div>
+        <div class="sc-row">Back <span class="sc-val">4–6 sets</span></div>
+        <div class="sc-row">Quads <span class="sc-val blue">4–6 sets</span></div>
+        <div class="sc-row">Hamstrings <span class="sc-val blue">4–6 sets</span></div>
+        <div class="sc-row">Shoulders <span class="sc-val">4–6 sets</span></div>
+        <div class="sc-row">Glutes <span class="sc-val blue">4–6 sets</span></div>
+        <div class="sc-row">Biceps <span class="sc-val">4–6 sets</span></div>
+        <div class="sc-row">Calves <span class="sc-val blue">4–6 sets</span></div>
+        <div class="sc-row">Triceps <span class="sc-val">4–6 sets</span></div>
+        <div class="sc-row" style="color:var(--text-4);font-size:11px;">split across 2 sessions</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  BEST PROGRAM = THE ONE YOU EXECUTE CONSISTENTLY AND PROGRESSIVELY OVERLOAD WEEK OVER WEEK
+</div>
+
+</body>
+</html>
